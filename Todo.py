@@ -6,7 +6,7 @@ def make(todos, results):
         if i=='exit': break
         result.append(i)
     result = '\n'.join(result)
-    if result[0]!='(': result = '(0.0) '+result
+    if result[0]!='(': result = '(1.0) '+result
     todos.append(result)
     results[:] = []
     print('Item created.')
@@ -44,7 +44,7 @@ def adjust(todos, results, adj):
     i,newscore = adj; i=int(i)
     index = results[i][0]
     oldscore = priority_of(todos[index])
-    todos[index] = '(%s) %s' % (newscore, todos[index][todos[index].find(')')+1:])
+    todos[index] = '(%s)%s' % (newscore, todos[index][todos[index].find(')')+1:])
     print('Adjusted score from %s to %s' % (str(oldscore),newscore))
 
 def read(todos, fname='todo'):
