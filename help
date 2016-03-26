@@ -1,0 +1,48 @@
+SUMMARY:
+Interactive helper for managing a todo-list of tasks. Call as below:
+    python Todo.py todo history
+Here, `todo` is a filename containing a todo-list, and `history` is a file
+keeping track of all completed items. Please exit from this program using the
+`exit` command --- this allows the todo-list to be written before exiting.
+Each task has an importance score, and the list is always sorted by importance.
+
+AVAILABLE COMMANDS:
+make
+    0 arguments.
+    Starts task-writing session, which terminates when user enters 'exit'.
+    Multi-line tasks are possible. Specify the task's importance by beginning
+    with a parenthesized floating point number. The default importance is (1.0)
+    if no such number is provided.
+<search>
+    variable number of arguments: *SEARCHTERMS
+    Any user-input not recognized as one of the other 7 commands will be
+    interpreted as a list of space-delimited search terms. Searches are
+    case-insensitive, and all terms are required (they are AND'd together).
+    Thus, entering an empty string will trigger a search for an AND of 0
+    elements, i.e. a search with predicate TRUE, and hence will display the
+    whole current todo-list.
+
+adj
+    2 arguments: TASKINDEX, NEWSCORE
+    Adjusts the importance score of specified task.
+    Task is specified by its index in the most recent search.
+complete
+    1 argument: TASKINDEX
+    Congratulates user on completion of task, and moves it from current list
+    to history. Task is specified by its index in the most recent search.
+del
+    variable number of arguments: *TASKINDEXs
+    Removes tasks from the todo-list, without writing to history. If you
+    completed a task and hope to check it off the list, try the `complete`
+    command instead, for both its psychological and archaeological benefits.
+    Tasks are specified by their index in the most recent search.
+
+save
+    no arguments.
+    Saves current todo-list.
+exit
+    no arguments.
+    Saves current todo-list, then exits program.
+help
+    no arguments.
+    Prints this text.
